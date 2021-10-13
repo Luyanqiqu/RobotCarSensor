@@ -1,0 +1,87 @@
+
+
+
+int motor1WireA = 3;
+int motor1WireB = 2;
+int motor2WireA = 5;
+int motor2WireB = 4;
+
+
+const int sensorPin1 = 12;   
+const int sensorPin2 = 11;  
+ 
+
+
+
+
+int sensorState1 = 0; 
+int sensorState2 = 0; 
+void setup() {
+  
+  pinMode(sensorPin1, INPUT);
+  pinMode(sensorPin2, INPUT);
+  pinMode(motor1WireA, OUTPUT);
+  pinMode(motor1WireB, OUTPUT);
+  pinMode(motor2WireA, OUTPUT);
+  pinMode(motor2WireB, OUTPUT);
+}
+
+
+void loop() {
+// read the state of the pushbutton value:
+  sensorState1 = digitalRead(sensorPin1);
+  sensorState2 = digitalRead(sensorPin2);
+
+
+  // the sensor is high when touch the white color.
+  
+  if (sensorState2 == LOW && sensorState1 == LOW) {
+   
+    analogWrite(motor1WireA, 200);
+    analogWrite(motor1WireB, 0);
+    analogWrite(motor2WireA, 250);
+    analogWrite(motor2WireB, 0); 
+  }
+  
+   if (sensorState2 == HIGH ) {
+    analogWrite(motor1WireA, 0);
+    analogWrite(motor1WireB, 160);
+   analogWrite(motor2WireA, 0);
+   analogWrite(motor2WireB, 255);
+   delay(800);
+   analogWrite(motor1WireA, 255);
+    analogWrite(motor1WireB, 0);
+   analogWrite(motor2WireA, 180);
+   analogWrite(motor2WireB, 0);
+   delay(1400);
+  }
+  
+  if (sensorState1 == HIGH ) {
+  
+    analogWrite(motor1WireA, 250);
+    analogWrite(motor1WireB, 0);
+   analogWrite(motor2WireA, 0);
+   analogWrite(motor2WireB, 0);
+  }
+   if ( sensorState1 == LOW) {
+   
+    analogWrite(motor1WireA, 0);
+    analogWrite(motor1WireB, 0);
+    analogWrite(motor2WireA, 250);
+    analogWrite(motor2WireB, 0); 
+  }
+  
+  if ( sensorState2 == HIGH && sensorState1 == HIGH) {
+   
+     analogWrite(motor1WireA, 0);
+    analogWrite(motor1WireB, 160);
+   analogWrite(motor2WireA, 0);
+   analogWrite(motor2WireB, 255);
+   delay(800);
+   analogWrite(motor1WireA, 255);
+    analogWrite(motor1WireB, 0);
+   analogWrite(motor2WireA, 180);
+   analogWrite(motor2WireB, 0);
+   delay(1400);
+  }
+}
